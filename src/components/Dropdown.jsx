@@ -11,6 +11,7 @@ const CurrencyDropdown = ({
 
 }) => {
   const uniqueCurrencies = Array.from(new Set([...favorites, ...currencies]));
+  const isfav = curr=>favorites.includes(curr)
   return (
     <div>
       <label htmlFor={title} className='text-sm block font-medium text-gray-700'>{title}</label>
@@ -40,11 +41,11 @@ const CurrencyDropdown = ({
                   )
             })} 
         </select>
-        {uniqueCurrencies?.map((currency)=>{
         <button key={currency} onClick={()=>handlefavourite(currency)} className='absolute right-0 inset-y-0 pr-3 flex items-center leading-5 text-sm'>
-          {favorites.includes(currency) ? <HiMiniStar /> : <HiOutlineStar />}    
+          {isfav(currency) ? <HiMiniStar /> : <HiOutlineStar /> }    
+          {/* <HiOutlineStar /> */}
+
         </button>
-            })} 
       </div>
     </div>
   )
